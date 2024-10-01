@@ -1,0 +1,30 @@
+---
+version: "3.9"
+
+services:
+  # golang
+  web:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 8080:8080
+    networks:
+      - default
+  # clickhouse
+  clickhouse:
+    image: clickhouse/clickhouse-server
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    ports:
+      - 18123:8123
+      - 19000:9000
+    environment:
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+      CLICKHOUSE_DB: clickhouse
+      CLICKHOUSE_USER: clickhouse
+      CLICKHOUSE_PASSWORD: clickhouse
+    networks:
+      - default
