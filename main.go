@@ -28,7 +28,7 @@ func main() {
 		},
 	)
 
-	dsn := "clickhouse://clickhouse:clickhouse@localhost:19000/clickhouse?dial_timeout=10s&read_timeout=20s"
+	dsn := "clickhouse://clickhouse:clickhouse@clickhouse:9000/clickhouse?dial_timeout=10s&read_timeout=20s"
 	db, err := gorm.Open(clickhouse.Open(dsn), &gorm.Config{
 		Logger: newLogger,
 	})
