@@ -2,15 +2,6 @@
 version: "3.9"
 
 services:
-  # golang
-  web:
-    build: .
-    volumes:
-      - .:/usr/src/app
-    ports:
-      - 18080:8080
-    networks:
-      - default
   # clickhouse
   clickhouse:
     image: clickhouse/clickhouse-server
